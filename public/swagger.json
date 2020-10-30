@@ -1,0 +1,252 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "hyperf文档测试",
+        "version": "1.0.0",
+        "title": "hyperf文档测试"
+    },
+    "host": "cwt.hyperfdemo.cn",
+    "schemes": [
+        "http"
+    ],
+    "tags": [
+        {
+            "name": "用户操作",
+            "description": "用户的注册\/登陆\/修改个人信息"
+        }
+    ],
+    "definitions": {
+        "ModelArray": {
+            "type": "array",
+            "required": [],
+            "items": {
+                "type": "string"
+            }
+        },
+        "ModelObject": {
+            "type": "object",
+            "required": [],
+            "items": {
+                "type": "string"
+            }
+        },
+        "RegisterPostResponse200": {
+            "properties": {
+                "data": {
+                    "type": "integer",
+                    "default": 1
+                }
+            }
+        },
+        "LoginPostResponse200": {
+            "properties": {
+                "token": {
+                    "type": "integer",
+                    "default": 1
+                },
+                "expire": {
+                    "type": "integer",
+                    "default": 1
+                },
+                "info": {
+                    "type": "integer",
+                    "default": 1
+                }
+            }
+        },
+        "LogoutPostResponse200": {
+            "properties": {
+                "username": {
+                    "type": "string",
+                    "default": "admin"
+                }
+            }
+        },
+        "ChgpwdPostResponse0": {
+            "properties": {
+                "username": {
+                    "type": "string",
+                    "default": "张三"
+                }
+            }
+        }
+    },
+    "paths": {
+        "\/register": {
+            "post": {
+                "tags": [
+                    "用户操作"
+                ],
+                "summary": null,
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "username",
+                        "description": "用户id",
+                        "required": true,
+                        "type": "string",
+                        "default": null
+                    },
+                    {
+                        "in": "query",
+                        "name": "password",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string",
+                        "default": null
+                    }
+                ],
+                "consumes": [
+                    "application\/json"
+                ],
+                "produces": [
+                    "application\/json"
+                ],
+                "responses": {
+                    "-1": {
+                        "description": "参数错误"
+                    },
+                    "200": {
+                        "description": "创建成功",
+                        "schema": {
+                            "$ref": "#\/definitions\/RegisterPostResponse200"
+                        }
+                    }
+                },
+                "description": "用户注册"
+            }
+        },
+        "\/login": {
+            "post": {
+                "tags": [
+                    "用户操作"
+                ],
+                "summary": null,
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "username",
+                        "description": "用户名称",
+                        "required": true,
+                        "type": "string",
+                        "default": null
+                    },
+                    {
+                        "in": "query",
+                        "name": "password",
+                        "description": "密码",
+                        "required": true,
+                        "type": "string",
+                        "default": null
+                    }
+                ],
+                "consumes": [
+                    "application\/json"
+                ],
+                "produces": [
+                    "application\/json"
+                ],
+                "responses": {
+                    "-1": {
+                        "description": "参数错误"
+                    },
+                    "200": {
+                        "description": "登陆成功",
+                        "schema": {
+                            "$ref": "#\/definitions\/LoginPostResponse200"
+                        }
+                    }
+                },
+                "description": "用户登陆"
+            }
+        },
+        "\/logout": {
+            "post": {
+                "tags": [
+                    "用户操作"
+                ],
+                "summary": null,
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "token",
+                        "description": "接口访问凭证",
+                        "required": true,
+                        "type": "string",
+                        "default": null
+                    },
+                    {
+                        "in": "query",
+                        "name": "username",
+                        "description": "用户名称",
+                        "required": true,
+                        "type": "string",
+                        "default": null
+                    }
+                ],
+                "consumes": [
+                    "application\/json"
+                ],
+                "produces": [
+                    "application\/json"
+                ],
+                "responses": {
+                    "-1": {
+                        "description": "参数错误"
+                    },
+                    "200": {
+                        "description": "登陆成功",
+                        "schema": {
+                            "$ref": "#\/definitions\/LogoutPostResponse200"
+                        }
+                    }
+                },
+                "description": "退出登陆"
+            }
+        },
+        "\/chgpwd": {
+            "post": {
+                "tags": [
+                    "用户操作"
+                ],
+                "summary": null,
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "token",
+                        "description": "接口访问凭证",
+                        "required": true,
+                        "type": "string",
+                        "default": null
+                    },
+                    {
+                        "in": "query",
+                        "name": "username",
+                        "description": "用户名称",
+                        "required": true,
+                        "type": "string",
+                        "default": null
+                    }
+                ],
+                "consumes": [
+                    "application\/json"
+                ],
+                "produces": [
+                    "application\/json"
+                ],
+                "responses": {
+                    "-1": {
+                        "description": "参数错误"
+                    },
+                    "0": {
+                        "description": null,
+                        "schema": {
+                            "$ref": "#\/definitions\/ChgpwdPostResponse0"
+                        }
+                    }
+                },
+                "description": "修改个人信息"
+            }
+        }
+    }
+}
